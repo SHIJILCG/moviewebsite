@@ -1,0 +1,41 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "name": "John Doe",
+        "gender": "male",
+        "email": "john.doe@example.com"
+      },
+      {
+        "id": 2,
+        "name": "Jane Smith",
+        "gender": "female",
+        "email": "jane.smith@example.com"
+      },
+      {
+        "id": 3,
+        "name": "Michael Johnson",
+        "gender": "male",
+        "email": "michael.johnson@example.com"
+      },
+      {
+        "id": 4,
+        "name": "Emily Davis",
+        "gender": "female",
+        "email": "emily.davis@example.com"
+      },
+      {
+        "id": 5,
+        "name": "David Wilson",
+        "gender": "male",
+        "email": "david.wilson@example.com"
+      },
+      {
+        "id": 6,
+        "name": "Sophia Martinez",
+        "gender": "female",
+        "email": "sophia.martinez@example.com"
+      }
+    ]
+  }
+  
