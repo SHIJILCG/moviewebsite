@@ -1,14 +1,15 @@
 import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
-import { couldStartTrivia } from "typescript";
+import { axiosInstance } from "./axiosinstance";
 
 export default function useGetAMovie(movieId: number) {
+
   return useQuery(
     ["get_item_by_id"],
     async () => {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/movie/${movieId}?api_key=cd83aa8571012f35084e85ad8f97b20a`
+      const response = await axiosInstance.get(
+        `movie/${movieId}?api_key=${process.env.REACT_APP_API_KEY}`
       );
       return response.data;
     },

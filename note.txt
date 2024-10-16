@@ -1,0 +1,32 @@
+
+adult: false--
+backdrop_path: "/yDHYTfA3R0jFYba16jBB1ef8oIt.jpg"----
+belongs_to_collection: {id: 448150, name: 'Deadpool Collection', poster_path: '/30c5jO7YEXuF8KiWXLg9m28GWDA.jpg', backdrop_path: '/hBQOWY8qWXJVFAc8yLTh1teIu43.jpg'}
+budget: 200000000------
+genres: (3) [{…}, {…}, {…}]
+homepage: "https://www.marvel.com/movies/deadpool-and-wolverine"
+id: 533535
+imdb_id: "tt6263850"
+origin_country: ['US']
+original_language: "en"
+original_title: "Deadpool & Wolverine"
+overview: "A listless Wade Wilson toils away in civilian life with his days as the morally flexible mercenary, Deadpool, behind him. But when his homeworld faces an existential threat, Wade must reluctantly suit-up again with an even more reluctant Wolverine."
+popularity: 4256.172-----
+poster_path: "/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg"--------
+production_companies: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
+production_countries: [{…}]
+release_date: "2024-07-24"--=----
+revenue: 1332494933-----
+runtime: 128------
+spoken_languages: [{…}]
+status: "Released"
+tagline: "Come together."-------
+title: "Deadpool & Wolverine"-------
+video: false
+vote_average: 7.713-----
+vote_count: 4429--------
+
+
+
+debounds for search
+express----

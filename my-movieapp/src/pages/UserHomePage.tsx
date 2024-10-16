@@ -1,31 +1,46 @@
-import React from "react";
-import { useGetMovies } from "../api/useGetMovies";
-import { MovieDetailsType } from "../Types/movietypes";
-import { MovieCard } from "../Components/MovieCard";
+import React, { useEffect, useState } from "react";
+import { OptionCard } from "../Components/OptionCard";
+import { MovieShowContainer } from "../Components/MovieShowContainer";
+import { SerachMovieShowContainer } from "../Components/SerachMovieShowContainer";
 
 export const UserHomePage = () => {
-  const { data: movies, isLoading, isError } = useGetMovies();
-  if (isLoading) {
-    return <div>Data is fetching</div>;
-  }
-  if (isError) {
-    return <div>Error while fetching</div>;
-  }
-  if (!movies || movies.results.length < 1) {
-    return <div>No data found</div>;
-  }
+  const [SearchValue, setSearchValue] = useState<string>("");
+  const [serh, setserh] = useState("");
+  useEffect(() => {
+    setSearchValue(serh);
+  }, [serh]);
+
   return (
     <div className="flex flex-col h-[100vh] relative">
-      <header className="h-[100px] w-[100%] bg-gray-700 fixed top-0 z-[1000]"></header>{" "}
+      <header className="h-[100px] w-[100%] bg-gray-700 fixed top-0 z-[1000] flex items-center justify-end p-[25px]">
+        <input
+          type="text"
+          value={SearchValue}
+          placeholder="Search Movie"
+          className="bg-transparent px-[10px] text-white border-2 border-black rounded-lg h-[45px] w-[300px]"
+          onChange={(e) => setserh(e.target.value)}
+        />
+      </header>{" "}
       {/** header */}
-      <div className="flex">
-        <nav className="w-[300px] h-[100%] bg-gray-800 fixed left-0 top-[100px]"></nav>
+      <div
+        className={`mt-[100px]  max-w-[100vw] ${
+          SearchValue ? "min-h-[100vh]" : "flex"
+        }`}
+      >
+        {!SearchValue && (
+          <nav className="w-[300px] h-[100%] bg-gray-800 fixed flex flex-col left-0 top-[100px] gap-2 p-[10px] z-[1000] text-white text-[20px] font-bold">
+            <OptionCard text="Popular" />
+            <OptionCard text="Now Playing" />
+            <OptionCard text="Top Rated" />
+            <OptionCard text="Upcoming" />
+          </nav>
+        )}
         {/** left nav */}
-        <div className="flex flex-wrap gap-[40px] p-[20px] mt-[100px] ml-[300px] bg-gray-500">
-          {movies.results.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
-          ))}
-        </div>
+        {SearchValue ? (
+          <SerachMovieShowContainer searchResult={SearchValue} />
+        ) : (
+          <MovieShowContainer />
+        )}
       </div>
     </div>
   );
