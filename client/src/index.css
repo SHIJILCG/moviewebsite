@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.LoadingPage::after{
+  content: "ReviewSphere";
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 20%;
+  transform: translateX(-20%);
+  transform: translateY(-50%);
+  color: white;
+  font:bold;
+  font-size: 90px;
+}
+.active{
+   transform:  translateY(0%);
+   transition: transform 0.4s ease-in;
+}
+.noactive{
+  transition: transform 0.4s ease-in;
+}
+.mainPage::after{
+   content: "";
+   position: absolute;
+   width: 100vw;
+   height: 100vh;
+   background-color: #0000007a;
+}
+.mainbody{
+   width: calc(100vw - 315px);
+}
+.hidescrollbar{
+    scrollbar-width:thin;
+    scrollbar-color: #d3d3d3 transparent; 
+    
+}
+.LoginPage{
+   position: relative;
+   background: url('https://t3.ftcdn.net/jpg/07/80/78/40/360_F_780784065_tiWH8HMcOejWD8VLj0O3ec5MgLs0JWyu.jpg') no-repeat center/cover;
+   z-index: 0;
+}
+.LoginPage::before{
+   content: "";
+   position: absolute;
+   width: 100vw;
+   height: 100vh;
+   top: 0px;
+   left: 0px;
+   background: rgba(0, 0, 0, 0.719);
+   z-index: 1;
+}
+.hiddenscrollbar{
+    scrollbar-width: none;
+}
+.negativerotate{
+    transform: rotateY(-180deg);
+    transition: transform 0.4s linear;
+}
+.positiverotate{
+   transform:rotateY(180deg) ;
+   transition: transform 0.4s linear;
+}
