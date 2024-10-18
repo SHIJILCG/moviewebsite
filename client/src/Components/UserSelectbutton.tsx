@@ -7,11 +7,12 @@ type UserSelectbuttonPropsTYpe = {
 export const UserSelectbutton = ({ user }: UserSelectbuttonPropsTYpe) => {
   const navigate = useNavigate();
   return (
-    <span
-      className=" text-[#ffffff] uppercase font-bold w-[96%] text-left"
-      onClick={() => navigate("userhomepage")}
+    <div
+      className=" text-[#ffffff] uppercase font-bold w-[96%] flex gap-5 text-left"
+      onClick={() => navigate(`userhomepage/${user.id}`)}
     >
-      {user.name}
-    </span>
+      <span>{user.name}</span>
+      <span className=" lowercase text-[#858585]">{user.email}</span>
+    </div>
   );
 };

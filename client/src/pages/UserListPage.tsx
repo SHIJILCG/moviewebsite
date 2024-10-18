@@ -1,19 +1,11 @@
-import React, { useState } from "react";
-import useFetchUser from "../api/useFetchUser";
+import React, {useState } from "react";
+import useFetchUsers from "../api/useFetchUsers";
 import { AccountSelectContainer } from "../Components/AccountSelectContainer";
 import { AddNewUserContainer } from "../Components/AddNewUserContainer";
 
 export const UserListPage = () => {
-  const { data: Users, refetch } = useFetchUser();
+  const { data: Users} = useFetchUsers();
   const [isNewUser, setisNewUser] = useState(false);
-  if (!Users || Users.length < 1) {
-    return <div>No User Found</div>;
-  }
-  if (!Users) {
-    refetch();
-  }
-
-  console.log(Users);
   return (
     <div className="w-[100vw] h-[100vh] flex items-center justify-center gap-[40px] LoginPage ">
       <div className="h-[100%] flex flex-col justify-center text-left w-[40%] max-w-[40%] z-10">

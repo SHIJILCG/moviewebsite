@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { MovieDetailsType } from "../Types/movietypes";
-import { useNavigate } from "react-router-dom";
+import RatingCircle from "./RatingCircle";
+import { VirewDetailsButton } from "./VirewDetailsButton";
+import { WhishlistButton } from "./WhishlistButton";
+import WhatchlaterButton from "./WatchlaterButton";
 
 export const MovieCard = ({ movie }: { movie: MovieDetailsType }) => {
-  const navigate = useNavigate();
   const [active, setactive] = useState("");
   return (
     <div className=" mx-auto min-w-[280px] max-w-[245px] min-h-[350px] overflow-hidden flex flex-col gap-3 ">
@@ -17,13 +19,14 @@ export const MovieCard = ({ movie }: { movie: MovieDetailsType }) => {
           alt={movie.title}
           className="w-[100%] h-[100%]"
         />
-        <span className=" absolute flex items-center justify-center font-bold top-0 right-0 w-[50px] h-[50px] bg-[#9e9e9e] rounded-full">{movie.vote_average.toFixed(1)}</span>
-        <button
-          className={`absolute bg-red-700 bottom-10 right-5 p-[10px] rounded-3xl text-white font-bold active:scale-95 translate-y-[200%] noactive ${active}`}
-          onClick={() => navigate(`/moviedetailspage/${movie.id}`)}
-        >
-          View Details
-        </button>
+        <div className="absolute top-1 right-1 h-[150px]">
+          <div className="relative w-[100%] items-center justify-between h-[100%] flex flex-col">
+            <RatingCircle value={movie.vote_average} />
+            <WhishlistButton active={active} movie={movie} />
+            <WhatchlaterButton active={active} movie={movie} />
+          </div>
+        </div>
+        <VirewDetailsButton id={movie.id} active={active} />
       </div>
       <div className="flex items-center">
         <span className="text-[20px] text-white font-bold mx-[25px]">

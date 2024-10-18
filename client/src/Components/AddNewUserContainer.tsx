@@ -2,20 +2,21 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import React from "react";
 import useCreateUser from "../api/useCreateUser";
+import getRandomNumbers from "../common/getRandomNumbers";
 type AddNewUserContainerPropsType = {
   isNewUser: boolean;
   setisNewUser: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const initialValue = {
   name: "",
-  age: 18,
+  email: "",
 };
 
 const validationSchema = Yup.object({
   name: Yup.string()
     .matches(/^[aA-zZ\s]+$/, "Name can only contain letters")
     .required("required"),
-  age: Yup.number().typeError("Age must be a number").required("required"),
+  email: Yup.string().email("Invalid email address").required("required"),
 });
 
 export const AddNewUserContainer = ({
@@ -23,9 +24,9 @@ export const AddNewUserContainer = ({
   setisNewUser,
 }: AddNewUserContainerPropsType) => {
   const { mutate } = useCreateUser();
-  const onsubmit = (value: { name: string; age: number }) => {
-    console.log(value);
-    mutate({ ...value, id: new Date().getSeconds() });
+  const onsubmit = (value: { name: string; email: string }) => {
+    mutate({ ...value, id: getRandomNumbers() });
+    setisNewUser(false);
   };
   return (
     <div
@@ -65,17 +66,17 @@ export const AddNewUserContainer = ({
           </div>
           <div className="flex flex-col text-left p-[20px]">
             <div className="w-[100%] flex items-center gap-10 justify-between">
-              <label htmlFor="age" className="w-30% font-bold text-[21px]">
-                Age:
+              <label htmlFor="email" className="w-30% font-bold text-[21px]">
+                Email:
               </label>
               <Field
-                id="age"
-                name="age"
-                placeholder="Enter Age..."
+                id="email"
+                name="email"
+                placeholder="Enter Email..."
                 className="w-[80%] h-[50px] bg-transparent border-2  border-white rounded-md text-white placeholder:text-white flex-1 max-w-[424px]"
               />
             </div>
-            <ErrorMessage name="age" />
+            <ErrorMessage name="email" />
           </div>
           <div>
             <button
