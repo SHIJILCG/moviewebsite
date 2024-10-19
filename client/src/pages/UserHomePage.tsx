@@ -12,7 +12,7 @@ export const UserHomePage = () => {
   return (
     <currentUserContext.Provider value={CurrentUser}>
       <div className="flex flex-col h-[100vh] relative">
-        <header className="h-[100px] w-[100%] bg-gray-700 fixed top-0 z-[1000] flex items-center justify-between p-[25px]">
+        <header className="h-[100px] w-[100%] bg-gray-700 fixed top-0 z-[1000] flex items-center justify-between p-[25px] HomeHeader">
           <UserPropfileButton userid={userId} />
           <input
             type="text"
@@ -24,12 +24,12 @@ export const UserHomePage = () => {
         </header>{" "}
         {/** header */}
         <div
-          className={`mt-[100px]  max-w-[100vw] ${
+          className={`mt-[100px]  max-w-[100vw] HomesPagenavbodyContainer ${
             SearchValue ? "min-h-[100vh]" : "flex"
           }`}
         >
           {!SearchValue && (
-            <nav className="w-[300px] h-[100%] bg-gray-800 fixed flex flex-col left-0 top-[100px] gap-2 p-[10px] z-[1000] text-white text-[20px] font-bold">
+            <nav className="w-[300px] h-[100%] bg-gray-800 fixed flex flex-col left-0 top-[100px] gap-2 p-[10px] z-[1000] text-white text-[20px] font-bold Homenav">
               <OptionCard text="Popular" />
               <OptionCard text="Now Playing" />
               <OptionCard text="Top Rated" />
@@ -38,9 +38,12 @@ export const UserHomePage = () => {
           )}
           {/** left nav */}
           {SearchValue ? (
-            <SearchMovieShowContainer searchResult={SearchValue} userId={CurrentUser}/>
+            <SearchMovieShowContainer
+              searchResult={SearchValue}
+              userId={CurrentUser}
+            />
           ) : (
-            <MovieShowContainer userId={CurrentUser}/>
+            <MovieShowContainer userId={CurrentUser} />
           )}
         </div>
       </div>

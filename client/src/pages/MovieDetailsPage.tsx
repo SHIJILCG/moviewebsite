@@ -1,14 +1,16 @@
-
 import { useParams } from "react-router-dom";
 import useGetAMovie from "../api/useGetAMovie";
 import BackButtonGray from "../Components/BackButtonGray";
+import CircularRatingContainer from "../Components/CircularRatingContainer";
+import MovieDetailsSpecificFormat from "../Components/MovieDetailsSpecificFormat";
+import ProductionCompaniesDetails from "../Components/ProductionCompaniesDetails";
 
 export const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const movie = useGetAMovie((movieId && +movieId) || 1);
   return (
     <>
-      <div className=" min-h-[100vh] w-[100vw] relative flex mainPage ">
+      <div className=" min-h-[100vh] w-[100vw] relative flex mainPage firstMovieDetialsContainer">
         <div className="w-[100%] max-h-[100vh] h-[100%] absolute z-[-100]">
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.data?.backdrop_path}`}
@@ -16,18 +18,18 @@ export const MovieDetailsPage = () => {
             className="w-[100%] h-[100%]"
           />
         </div>
-        <div className="w-[50%]"></div>
-        <div className="w-[50%] mt-[100px] z-10 text-center items-center flex flex-col gap-[20px]">
+        <div className="w-[50%] emptydiv"></div>
+        <div className="w-[50%] mt-[100px] z-10 text-center items-center flex flex-col gap-[20px] titleContainer">
           <span className="text-[80px] text-white font-bold uppercase">
             {movie.data?.original_title}
           </span>
-          <div className="flex w-[55%] justify-between text-white border-y-2 border-[#aaaaaa] py-[8px]">
+          <div className="flex w-[55%] justify-between text-white border-y-2 border-[#aaaaaa] py-[8px] titleContainerinnnerborderContainer">
             <div className="flex gap-[10px]">
               <span>{movie.data?.release_date?.slice(0, 4)}</span>
               <span>{movie.data?.genres[0].name}</span>
               <span>{movie.data?.runtime}m</span>
             </div>
-            <div className="flex  gap-[10px]">
+            <div className="flex  gap-[10px] ml-[5px]">
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/1200px-IMDB_Logo_2016.svg.png"
                 alt=""
@@ -41,8 +43,8 @@ export const MovieDetailsPage = () => {
           </p>
         </div>
       </div>
-      <div className="p-[20px] pt-[50px] bg-slate-400 flex">
-        <div className="">
+      <div className="p-[20px] pt-[50px] bg-slate-400 flex secondMovieDetialsContainer">
+        <div className="secondPosterContainer">
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.data?.poster_path}`}
             alt=""
@@ -51,46 +53,44 @@ export const MovieDetailsPage = () => {
             {movie.data?.tagline}
           </span>
         </div>
-        <div className="flex-col flex text-[#17394b] text-left flex-1 items-center">
-          <span className="text-[30px] font-bold text-white">
+        <div className="flex-col flex text-[#17394b] text-left p-[20px] flex-1 items-center movieFullDetailsContaier">
+          <span className="text-[30px] font-bold text-white secondtitile">
             {movie.data?.title}({movie.data?.release_date})
           </span>
-          <div className="flex w-[600px] justify-between">
-            <span className="font-bold uppercase w-[200px] h-[200px]  flex flex-col  items-center justify-center">
-              <span className="w-[100px] h-[100px] rounded-full bg-gray-800 flex items-center justify-center text-white border-4 border-green-400">
-                {movie.data?.vote_average}
-              </span>
-              <span>vote average</span>
-            </span>
-            <span className="font-bold uppercase w-[200px] h-[200px] flex flex-col  items-center justify-center">
-              <span className="w-[100px] h-[100px] rounded-full bg-gray-800 flex items-center justify-center text-white border-4 border-green-400">
-                {movie.data?.popularity}
-              </span>
-              <span>popularity</span>
-            </span>
-            <span className="font-bold uppercase w-[200px] h-[200px]  flex flex-col  items-center justify-center">
-              <span className="w-[100px] h-[100px] rounded-full bg-gray-800 flex items-center justify-center text-white border-4 border-green-400">
-                {movie.data?.vote_count}
-              </span>
-              <span>vote count:</span>
-            </span>
+          <div className="flex w-[600px] justify-between movieratingContainer">
+            <CircularRatingContainer
+              Text="vote average"
+              voteCount={movie.data?.vote_average}
+            />
+            <CircularRatingContainer
+              Text="popularity"
+              voteCount={movie.data?.popularity}
+            />
+            <CircularRatingContainer
+              Text="vote count"
+              voteCount={movie.data?.vote_count}
+            />
           </div>
-          <div className="w-[600px] flex items-center justify-between">
-            <span className="font-bold uppercase">
-              budget:${movie.data?.budget}
-            </span>
-            <span className="font-bold uppercase">
-              revenue:${movie.data?.revenue}
-            </span>
+          <div className="w-[600px] flex items-center justify-between budgetdiv">
+            <MovieDetailsSpecificFormat
+              outerContent="budget"
+              innerContent={`$${movie.data?.budget}`}
+            />
+            <MovieDetailsSpecificFormat
+              outerContent="revenue"
+              innerContent={`$${movie.data?.revenue}`}
+            />
           </div>
-          <div className="flex flex-col w-[600px] text-left my-[20px] gap-5">
-            <span className="font-black uppercase">
-              status:{movie.data?.status}
-            </span>
-            <span className="font-black uppercase">
-              original language:{movie.data?.original_language}
-            </span>
-            <span className="uppercase  font-bold">
+          <div className="flex flex-col w-[600px] text-left my-[20px] gap-5 statusdiv">
+            <MovieDetailsSpecificFormat
+              outerContent=" status"
+              innerContent={`${movie.data?.status}`}
+            />
+            <MovieDetailsSpecificFormat
+              outerContent="original language"
+              innerContent={`${movie.data?.original_language}`}
+            />
+            <span className="uppercase  font-bold items-center flex flex-wrap">
               genres:{" "}
               {movie.data?.genres.map((item: { id: number; name: string }) => (
                 <span key={item.id}>{item.name},</span>
@@ -109,21 +109,13 @@ export const MovieDetailsPage = () => {
                   name: string;
                   origin_country: string;
                 }) => (
-                  <div
+                  <ProductionCompaniesDetails
                     key={comp.id}
-                    className="flex flex-col items-center justify-between  h-[60px]"
-                  >
-                    <span className="w-[50px]">
-                      <img
-                        src={`https://image.tmdb.org/t/p/w500${comp?.logo_path}`}
-                        alt={""}
-                        className="w-[100%] h-[100%]"
-                      />
-                    </span>
-                    <span className="font-bold ">
-                      {comp.name}[{comp.origin_country}]
-                    </span>
-                  </div>
+                    name={comp.name}
+                    logo_path={comp.logo_path}
+                    origin_country={comp.origin_country}
+                    id={comp.id}
+                  />
                 )
               )}
             </div>

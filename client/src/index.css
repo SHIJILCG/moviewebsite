@@ -75,9 +75,43 @@
 }
 
 
+
+
+
+@media (max-width:1190px) {
+
+
+   .movieFullDetailsContaier {
+      flex: 0;
+   }
+
+   .secondMovieDetialsContainer {
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .movieratingContainer,
+   .budgetdiv,
+   .statusdiv {
+      width: 400px;
+   }
+}
+
 @media (max-width:1125px) {
    .userdetailscontainer {
       flex-direction: column;
+   }
+
+   .emptydiv {
+      display: none;
+   }
+
+   .firstMovieDetialsContainer {
+      justify-content: center;
+   }
+
+   .titleContainer {
+      width: 80%;
    }
 }
 
@@ -95,15 +129,70 @@
    }
 }
 
+@media (max-width:650px) {
+   .Homenav {
+      display: none;
+   }
+
+   .ContentBody,
+   .searchResultContainer {
+      margin-left: 0px;
+      margin-top: 100px;
+      width: 100%;
+   }
+
+   .HomeHeader {
+      flex-direction: column;
+      height: 200px;
+   }
+}
+
 @media (max-width:600px) {
    .LoaginContainer {
       padding: 20px;
    }
+
+   .titleContainerinnnerborderContainer {
+      flex-direction: column;
+      align-items: center;
+   }
 }
+
 @media (max-width:550px) {
- .InputContainer{
-    gap: 10px;
- }
+   .InputContainer {
+      gap: 10px;
+   }
+
+   .userprofilenavbar {
+      display: flex;
+      width: 100%;
+      height: 300px;
+   }
+
+   .profileContentContainer {
+      margin-top: 300px;
+      width: 100%;
+      margin-left: 0px;
+   }
+
+   .movieratingContainer {
+      flex-direction: column;
+      align-items: center;
+   }
+
+   .secondtitile {
+      width: 300px;
+      text-align: center;
+   }
+
+   .budgetdiv {
+      flex-direction: column;
+   }
+
+   .statusdiv {
+      width: 300px;
+      align-items: center;
+   }
 }
 
 @media (max-width:420px) {
@@ -111,10 +200,12 @@
       overflow: hidden;
       text-overflow: ellipsis;
    }
-    .loginimg{
-       width: 100px;
-       margin-top: 50px;
-    }
+
+   .loginimg {
+      width: 100px;
+      margin-top: 50px;
+   }
+
    .LoaginContainer {
       padding: 20px;
    }

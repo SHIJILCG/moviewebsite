@@ -159,7 +159,6 @@ app.delete("/whishlist/:Id", (req, res) => {
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 app.delete("/watchlater/:Id", (req, res) => {
-  console.log(req.body)
   try {
     const result = req.body;
     WatachLaterData.watchlater.forEach((item) => {

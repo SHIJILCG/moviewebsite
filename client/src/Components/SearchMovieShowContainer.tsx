@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSearchMovie } from "../api/useSearchMovie";
 import { MovieCard } from "./MovieCard";
-
+import loadingGif from "../grey-9026_256.gif";
 export const SearchMovieShowContainer = ({
   searchResult,
   userId,
@@ -22,39 +22,38 @@ export const SearchMovieShowContainer = ({
     }, 1000);
   }, [searchResult]);
 
-  if (isLoading) {
-    return (
-      <div className=" p-[20px] min-h-[100%] min-w-[100%] bg-gray-500">
-        Data is fetching
-      </div>
-    );
-  }
-  if (isError) {
-    return (
-      <div className=" p-[20px] min-h-[100%] min-w-[100%] bg-gray-500">
-        Error while fetching movies
-      </div>
-    );
-  }
-  if (!movies || movies.results.length < 1) {
-    return (
-      <div className=" p-[20px] min-h-[100%] min-w-[100%] bg-gray-500">
-        No data found
-      </div>
-    );
-  }
   return (
-    <div className=" p-[20px] min-h-[100%] min-w-[100%] bg-gray-500">
+    <div className=" p-[20px] min-h-[100%] min-w-[100%] bg-gray-500 searchResultContainer">
       <div className={` flex flex-col text-left min-h-[432px] `}>
         <div className="flex w-[100%] flex-wrap gap-20 mx-auto">
-          {movies.results.map((movie) => (
-            <MovieCard
-              key={movie.id}
-              movie={movie}
-              userId={userId}
-              type="WhishList"
-            />
-          ))}
+          {isLoading && (
+            <div className=" p-[20px] min-h-[100%] min-w-[100%] bg-gray-500 flex justify-center items-center">
+              <img
+                src={loadingGif}
+                alt="Data is loading"
+                className="w-[100px]"
+              />
+            </div>
+          )}
+          {isError && (
+            <div className=" p-[20px] min-h-[100%] min-w-[100%] bg-gray-500">
+              Error while fetching movies
+            </div>
+          )}
+          {movies?.results &&
+            movies.results.map((movie) => (
+              <MovieCard
+                key={movie.id}
+                movie={movie}
+                userId={userId}
+                type="WhishList"
+              />
+            ))}
+          {!isLoading && !isError && !movies?.results.length && (
+            <div className="flex flex-col min-h-[432px] w-[100%] text-center text-[20px]">
+              No data found
+            </div>
+          )}
         </div>
       </div>
     </div>

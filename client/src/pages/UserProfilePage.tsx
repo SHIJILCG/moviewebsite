@@ -11,7 +11,7 @@ export const UserProfilePage = () => {
   const [makeActive, setMakeActive] = useState(1);
   return (
     <div className="flex min-w-[100vw] min-h-[100vh]">
-      <div className="w-[25%] h-[100%] bg-gray-800 fixed">
+      <div className="w-[25%] h-[100%] bg-gray-800 fixed userprofilenavbar z-[1000]">
         <BackButtonGray css="absolute" />
         <div className="mt-[100px] px-[10px] w-[100%] h-[100% - 100px] flex flex-col gap-[20px]">
           <ProfilePageOptions
@@ -34,7 +34,7 @@ export const UserProfilePage = () => {
           />
         </div>
       </div>
-      <div className="w-[76%] ml-[24%] bg-gray-500">
+      <div className="w-[76%] ml-[24%] bg-gray-500 profileContentContainer">
         {makeActive === 1 && (
           <UserProfileDetailsContainer name={name} email={email} />
         )}
@@ -45,6 +45,6 @@ export const UserProfilePage = () => {
           <ContainerForWhishAndWatch id={id} type="WatchLater" />
         )}
       </div>
-    </div> 
-  )
-}
+    </div>
+  );
+};

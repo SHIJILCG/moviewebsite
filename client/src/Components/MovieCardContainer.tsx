@@ -1,6 +1,7 @@
 import { UseQueryResult } from "react-query";
 import { MovieDetailsType } from "../Types/movietypes";
 import { MovieCard } from "./MovieCard";
+import loadingGif from "../grey-9026_256.gif";
 type MovieCardContainerPorpsType = {
   list: UseQueryResult<{
     results: MovieDetailsType[];
@@ -13,7 +14,8 @@ export const MovieCardContainer = ({
   text,
   userId,
 }: MovieCardContainerPorpsType) => {
-  const { data: Result, isLoading, isError } = QueryResult;
+  const { data: Movies, isLoading, isError } = QueryResult;
+
   return (
     <div
       className={` flex flex-col text-left min-h-[432px] ${text
@@ -21,19 +23,23 @@ export const MovieCardContainer = ({
         .join("")}`}
     >
       <span className="font-bold text-white text-[25px] p-[20px]">{text}</span>
-      <div className="flex w-[100%] overflow-x-scroll hidescrollbar">
+      <div
+        className={`flex w-[100%] overflow-x-scroll hidescrollbar ${
+          isLoading && "justify-center"
+        }`}
+      >
         {isLoading && (
-          <div className="flex flex-col text-left min-h-[432px]">
-            Data is fetching
+          <div className="flex flex-col text-left min-h-[432px] justify-center">
+            <img src={loadingGif} alt="Data is loading" className="w-[100px]" />
           </div>
         )}
         {isError && (
-          <div className="flex flex-col text-left min-h-[432px]">
+          <div className="text-center min-h-[432px]">
             Error while fetching {text} movies
           </div>
         )}
-        {Result?.results &&
-          Result.results.map((movie) => (
+        {Movies?.results &&
+          Movies.results.map((movie) => (
             <MovieCard
               key={movie.id}
               movie={movie}
@@ -41,10 +47,8 @@ export const MovieCardContainer = ({
               type="WhishList"
             />
           ))}
-        {!isLoading && !isError && !Result?.results && (
-          <div className="flex flex-col text-left min-h-[432px]">
-            No data found
-          </div>
+        {!isLoading && !isError && !Movies?.results.length && (
+          <div className="text-center min-h-[432px] w-[100%] text-[20px]">No data found</div>
         )}
       </div>
     </div>

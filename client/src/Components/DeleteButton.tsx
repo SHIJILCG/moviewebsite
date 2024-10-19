@@ -28,7 +28,7 @@ export default function DeleteButton({
         onMouseLeave={() => setactive(false)}
       >
         <button className="active:scale-95" onClick={handlebuttonclik}>
-          🗑
+        ✖️
         </button>
         <span
           className={`absolute bg-black  rounded-md px-[5px] ml-[2px] ${
