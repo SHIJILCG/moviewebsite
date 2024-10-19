@@ -15,7 +15,7 @@ export const useGetTopRatedMovie = (): UseQueryResult<{
     },
     {
       onSuccess: (data) => {
-        console.log("succesfuly fetched top movies data");
+        // console.log("succesfuly fetched top movies data");
       },
       onError: () => {
         console.log("Error occured");

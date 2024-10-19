@@ -3,3 +3,9 @@ export type UserDetailsType ={
      name:string
      email:string
 }
+
+
+export type DetailsType={
+       userId:number
+       movieId:number
+}

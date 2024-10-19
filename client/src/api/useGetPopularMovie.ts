@@ -14,7 +14,7 @@ export const useGetPopularMovie = (): UseQueryResult<{
     },
     {
       onSuccess: (data) => {
-        console.log("succesfuly fetched popular movie data");
+        // console.log("succesfuly fetched popular movie data");
       },
       onError: () => {
         console.log("Error occured");

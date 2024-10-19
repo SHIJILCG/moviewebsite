@@ -2,10 +2,12 @@ import { useEffect } from "react";
 import { useSearchMovie } from "../api/useSearchMovie";
 import { MovieCard } from "./MovieCard";
 
-export const SerachMovieShowContainer = ({
+export const SearchMovieShowContainer = ({
   searchResult,
+  userId,
 }: {
   searchResult: string;
+  userId: number;
 }) => {
   const {
     data: movies,
@@ -13,8 +15,11 @@ export const SerachMovieShowContainer = ({
     isLoading,
     refetch,
   } = useSearchMovie(searchResult);
+
   useEffect(() => {
-    refetch();
+    setTimeout(() => {
+      refetch();
+    }, 1000);
   }, [searchResult]);
 
   if (isLoading) {
@@ -43,7 +48,12 @@ export const SerachMovieShowContainer = ({
       <div className={` flex flex-col text-left min-h-[432px] `}>
         <div className="flex w-[100%] flex-wrap gap-20 mx-auto">
           {movies.results.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              userId={userId}
+              type="WhishList"
+            />
           ))}
         </div>
       </div>

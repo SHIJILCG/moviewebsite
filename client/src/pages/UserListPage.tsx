@@ -1,15 +1,15 @@
-import React, {useState } from "react";
+import React, { useState } from "react";
 import useFetchUsers from "../api/useFetchUsers";
 import { AccountSelectContainer } from "../Components/AccountSelectContainer";
 import { AddNewUserContainer } from "../Components/AddNewUserContainer";
 
 export const UserListPage = () => {
-  const { data: Users} = useFetchUsers();
+  const { data: Users } = useFetchUsers();
   const [isNewUser, setisNewUser] = useState(false);
   return (
-    <div className="w-[100vw] h-[100vh] flex items-center justify-center gap-[40px] LoginPage ">
-      <div className="h-[100%] flex flex-col justify-center text-left w-[40%] max-w-[40%] z-10">
-        <span className="text-white uppercase text-[60px] font-bold">
+    <div className="w-[100vw] h-[100vh] flex items-center justify-center gap-[40px] overflow-hidden LoginPage ">
+      <div className="h-[100%] flex flex-col justify-center text-left w-[40%] max-w-[40%] z-10 LoginPagePartOne">
+        <span className="text-white uppercase text-[60px] font-bold LoaginPageLargeText">
           Welcome back
         </span>
         <span className="text-white">
@@ -17,12 +17,9 @@ export const UserListPage = () => {
           ratings, and more
         </span>
       </div>
-      <div className="h-[100%] flex flex-col justify-center w-[40%] max-w-[40%]">
+      <div className="h-[100%] flex flex-col justify-center w-[40%] max-w-[40%] LoginPagePartTwo">
         {isNewUser ? (
-          <AddNewUserContainer
-            isNewUser={isNewUser}
-            setisNewUser={setisNewUser}
-          />
+          <AddNewUserContainer setisNewUser={setisNewUser} />
         ) : (
           <AccountSelectContainer
             isNewUser={isNewUser}

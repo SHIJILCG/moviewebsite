@@ -13,17 +13,17 @@ export const WhishlistButton = ({
 }) => {
   const usercontext = useContext(currentUserContext);
   const userId = !usercontext ? 0 : usercontext;
-  console.log(userId)
   const { data: whishlist } = useFetchWhishList(userId);
-  const { mutate } = useAddWishlist();
+  const { mutate } = useAddWishlist(userId);
   const whishlistclick = () => {
     if (
-     whishlist.movies &&  whishlist.movies.some((items: MovieDetailsType) => items.id === movie.id)
+      whishlist.movies &&
+      whishlist.movies.some((items: MovieDetailsType) => items.id === movie.id)
     ) {
       alert("The movie is already added to wishlist");
       return;
     }
-    mutate({ id: userId, movies: movie });
+    mutate({ id: userId, movie: movie });
   };
   return (
     <div

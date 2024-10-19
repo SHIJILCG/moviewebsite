@@ -1,16 +1,16 @@
 import axios from "axios";
-import React from "react";
 import { useMutation, useQueryClient } from "react-query";
-import { whishlistType } from "../Types/movietypes";
+import { whishlistTypeTwo } from "../Types/movietypes";
 
-export default function useAddWishlist() {
+export default function useAddWishlist(userId: number) {
   const queryClient = useQueryClient();
   return useMutation(
-    (whishlist: whishlistType) => axios.post("http://localhost:4040/create-whishlist", whishlist),
+    (whishlist: whishlistTypeTwo) =>
+      axios.post(`http://localhost:4040/whishlist/${userId}`, whishlist),
     {
       onSuccess: () => {
-        console.log("succesfuly posted whishlist movie");
-        queryClient.invalidateQueries(["whishlist"]);
+        alert("Movie added to wishlist.❤️");
+        queryClient.invalidateQueries(["whishlist", userId]);
       },
       onError: () => {
         console.log("erroe while posting whihlist movie");

@@ -15,7 +15,7 @@ export const useGetNowPlayingMovie = (): UseQueryResult<{
     },
     {
       onSuccess: (data) => {
-        console.log("succesfuly fetched now playing movies data");
+        // console.log("succesfuly fetched now playing movies data");
       },
       onError: () => {
         console.log("Error occured");

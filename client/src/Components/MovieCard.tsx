@@ -1,11 +1,26 @@
 import React, { useState } from "react";
-import { MovieDetailsType } from "../Types/movietypes";
+import { ContainerType, MovieDetailsType } from "../Types/movietypes";
+import DeleteButton from "./DeleteButton";
 import RatingCircle from "./RatingCircle";
 import { VirewDetailsButton } from "./VirewDetailsButton";
-import { WhishlistButton } from "./WhishlistButton";
 import WhatchlaterButton from "./WatchlaterButton";
+import { WhishlistButton } from "./WhishlistButton";
 
-export const MovieCard = ({ movie }: { movie: MovieDetailsType }) => {
+export const MovieCard = ({
+  movie,
+  userId,
+  iswhishlist = true,
+  iswatchlist = true,
+  isDeleteButton = false,
+  type,
+}: {
+  movie: MovieDetailsType;
+  userId:number,
+  iswhishlist?: boolean;
+  iswatchlist?: boolean;
+  isDeleteButton?: boolean;
+  type:ContainerType
+}) => {
   const [active, setactive] = useState("");
   return (
     <div className=" mx-auto min-w-[280px] max-w-[245px] min-h-[350px] overflow-hidden flex flex-col gap-3 ">
@@ -22,11 +37,12 @@ export const MovieCard = ({ movie }: { movie: MovieDetailsType }) => {
         <div className="absolute top-1 right-1 h-[150px]">
           <div className="relative w-[100%] items-center justify-between h-[100%] flex flex-col">
             <RatingCircle value={movie.vote_average} />
-            <WhishlistButton active={active} movie={movie} />
-            <WhatchlaterButton active={active} movie={movie} />
+            {iswhishlist && <WhishlistButton active={active} movie={movie} />}
+            {iswatchlist && <WhatchlaterButton active={active} movie={movie} />}
           </div>
         </div>
         <VirewDetailsButton id={movie.id} active={active} />
+        {isDeleteButton && <DeleteButton movieId={movie.id} userId={userId} type={type}/>}
       </div>
       <div className="flex items-center">
         <span className="text-[20px] text-white font-bold mx-[25px]">

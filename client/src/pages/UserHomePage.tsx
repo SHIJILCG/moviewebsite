@@ -1,15 +1,14 @@
-import React, { useState } from "react";
-import { OptionCard } from "../Components/OptionCard";
-import { MovieShowContainer } from "../Components/MovieShowContainer";
-import { SerachMovieShowContainer } from "../Components/SerachMovieShowContainer";
+import React, { createContext, useState } from "react";
 import { useParams } from "react-router-dom";
+import { MovieShowContainer } from "../Components/MovieShowContainer";
+import { OptionCard } from "../Components/OptionCard";
+import { SearchMovieShowContainer } from "../Components/SearchMovieShowContainer";
 import { UserPropfileButton } from "../Components/UserPropfileButton";
-import { createContext } from "react";
 export const currentUserContext = createContext<number | null>(0);
 export const UserHomePage = () => {
   const [SearchValue, setSearchValue] = useState<string>("");
   const { userId } = useParams();
-  const CurrentUser = (!userId || typeof +userId !== "number") ? 0 : +userId
+  const CurrentUser = !userId || typeof +userId !== "number" ? 0 : +userId;
   return (
     <currentUserContext.Provider value={CurrentUser}>
       <div className="flex flex-col h-[100vh] relative">
@@ -39,9 +38,9 @@ export const UserHomePage = () => {
           )}
           {/** left nav */}
           {SearchValue ? (
-            <SerachMovieShowContainer searchResult={SearchValue} />
+            <SearchMovieShowContainer searchResult={SearchValue} userId={CurrentUser}/>
           ) : (
-            <MovieShowContainer />
+            <MovieShowContainer userId={CurrentUser}/>
           )}
         </div>
       </div>

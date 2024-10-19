@@ -15,7 +15,7 @@ export default function useGetAMovie(movieId: number) {
     },
     {
       onSuccess: () => {
-        console.log("succesfuly fetched cliked movie data");
+        // console.log("succesfuly fetched cliked movie data");
       },
       onError: () => {
         console.log("error occured while fetching");

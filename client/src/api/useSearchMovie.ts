@@ -1,6 +1,4 @@
-import axios from "axios";
-import React from "react";
-import { useQuery, useQueryClient, UseQueryResult } from "react-query";
+import { useQuery, UseQueryResult } from "react-query";
 import { MovieDetailsType } from "../Types/movietypes";
 import { axiosInstance } from "./axiosinstance";
 
@@ -9,7 +7,6 @@ export const useSearchMovie = (
 ): UseQueryResult<{
   results: MovieDetailsType[];
 }> => {
-  const queryClient = useQueryClient();
   return useQuery(
     ["searchmovie"],
     async () => {
@@ -18,7 +15,7 @@ export const useSearchMovie = (
     },
     {
       onSuccess: () => {
-        console.log("succesfuly  fetched Search movie data");
+        // console.log("succesfuly  fetched Search movie data");
         // queryClient.invalidateQueries(['searchmovie'])
       },
       onError: () => {

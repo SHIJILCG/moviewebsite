@@ -15,8 +15,13 @@ export type MovieDetailsType = {
   vote_count: number;
 };
 
+export type whishlistType = {
+  id: number;
+  movies: MovieDetailsType;
+};
+export type whishlistTypeTwo = {
+  id: number;
+  movie: MovieDetailsType;
+};
 
-export type whishlistType={
-   id:number,
-   movies:MovieDetailsType
-}
+export type ContainerType = "WhishList" | "WatchLater";

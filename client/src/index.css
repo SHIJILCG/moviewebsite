@@ -3,46 +3,53 @@
 @tailwind utilities;
 
 
-.LoadingPage::after{
-  content: "ReviewSphere";
-  position: absolute;
-  z-index: 10;
-  top: 50%;
-  left: 20%;
-  transform: translateX(-20%);
-  transform: translateY(-50%);
-  color: white;
-  font:bold;
-  font-size: 90px;
+.LoadingPage::after {
+   content: "ReviewSphere";
+   position: absolute;
+   z-index: 10;
+   top: 50%;
+   left: 20%;
+   transform: translateX(-20%);
+   transform: translateY(-50%);
+   color: white;
+   font: bold;
+   font-size: 90px;
 }
-.active{
-   transform:  translateY(0%);
+
+.active {
+   transform: translateY(0%);
    transition: transform 0.4s ease-in;
 }
-.noactive{
-  transition: transform 0.4s ease-in;
+
+.noactive {
+   transition: transform 0.4s ease-in;
 }
-.mainPage::after{
+
+.mainPage::after {
    content: "";
    position: absolute;
    width: 100vw;
    height: 100vh;
    background-color: #0000007a;
 }
-.mainbody{
+
+.mainbody {
    width: calc(100vw - 315px);
 }
-.hidescrollbar{
-    scrollbar-width:thin;
-    scrollbar-color: #d3d3d3 transparent; 
-    
+
+.hidescrollbar {
+   scrollbar-width: thin;
+   scrollbar-color: #d3d3d3 transparent;
+
 }
-.LoginPage{
+
+.LoginPage {
    position: relative;
    background: url('https://t3.ftcdn.net/jpg/07/80/78/40/360_F_780784065_tiWH8HMcOejWD8VLj0O3ec5MgLs0JWyu.jpg') no-repeat center/cover;
    z-index: 0;
 }
-.LoginPage::before{
+
+.LoginPage::before {
    content: "";
    position: absolute;
    width: 100vw;
@@ -52,14 +59,69 @@
    background: rgba(0, 0, 0, 0.719);
    z-index: 1;
 }
-.hiddenscrollbar{
-    scrollbar-width: none;
+
+.hiddenscrollbar {
+   scrollbar-width: none;
 }
-.negativerotate{
-    transform: rotateY(-180deg);
-    transition: transform 0.4s linear;
-}
-.positiverotate{
-   transform:rotateY(180deg) ;
+
+.negativerotate {
+   transform: rotateY(-180deg);
    transition: transform 0.4s linear;
+}
+
+.positiverotate {
+   transform: rotateY(180deg);
+   transition: transform 0.4s linear;
+}
+
+
+@media (max-width:1125px) {
+   .userdetailscontainer {
+      flex-direction: column;
+   }
+}
+
+@media (max-width:900px) {
+   .LoginPage {
+      flex-direction: column;
+      gap: 10px;
+      padding: 30px 0px;
+   }
+
+   .LoginPagePartOne,
+   .LoginPagePartTwo {
+      max-width: 80%;
+      width: 80%;
+   }
+}
+
+@media (max-width:600px) {
+   .LoaginContainer {
+      padding: 20px;
+   }
+}
+@media (max-width:550px) {
+ .InputContainer{
+    gap: 10px;
+ }
+}
+
+@media (max-width:420px) {
+   .userselectionemailbody {
+      overflow: hidden;
+      text-overflow: ellipsis;
+   }
+    .loginimg{
+       width: 100px;
+       margin-top: 50px;
+    }
+   .LoaginContainer {
+      padding: 20px;
+   }
+}
+
+@media (max-width:360px) {
+   .LoaginPageLargeText {
+      font-size: 40px;
+   }
 }

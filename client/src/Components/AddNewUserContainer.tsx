@@ -3,8 +3,8 @@ import * as Yup from "yup";
 import React from "react";
 import useCreateUser from "../api/useCreateUser";
 import getRandomNumbers from "../common/getRandomNumbers";
+import BackButtonGray from "./BackButtonGray";
 type AddNewUserContainerPropsType = {
-  isNewUser: boolean;
   setisNewUser: React.Dispatch<React.SetStateAction<boolean>>;
 };
 const initialValue = {
@@ -20,7 +20,6 @@ const validationSchema = Yup.object({
 });
 
 export const AddNewUserContainer = ({
-  isNewUser,
   setisNewUser,
 }: AddNewUserContainerPropsType) => {
   const { mutate } = useCreateUser();
@@ -30,19 +29,14 @@ export const AddNewUserContainer = ({
   };
   return (
     <div
-      className={` p-[40px] h-[613px] flex flex-col justify-around items-center max-w-[650px] border-2 text-white text-[20px] border-white rounded-md z-10 relative`}
+      className={` p-[40px] h-[613px] flex flex-col justify-around items-center max-w-[650px] border-2 text-white text-[20px] border-white rounded-md z-10 relative LoaginContainer`}
     >
       <img
         src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-social-media-user-image-gray-blank-silhouette-vector-illustration-305504015.jpg"
         alt=""
-        className="rounded-full w-[150px]"
+        className="rounded-full w-[150px] loginimg"
       />
-      <button
-        className=" absolute left-10 top-10 bg-[#838383] px-[30px] py-[10px] rounded-2xl active:scale-95"
-        onClick={() => setisNewUser(false)}
-      >
-        ⇦
-      </button>
+      <BackButtonGray css="absolute" setisNewUser={setisNewUser} />
       <Formik
         initialValues={initialValue}
         onSubmit={onsubmit}
@@ -50,7 +44,7 @@ export const AddNewUserContainer = ({
       >
         <Form className="flex flex-col  w-[100%] py-[40px]">
           <div className="flex flex-col text-left p-[20px]">
-            <div className="w-[100%] flex items-center gap-10">
+            <div className="w-[100%] flex items-center gap-10 InputContainer">
               <label htmlFor="name" className="w-30% font-bold text-[21px]">
                 Name:
               </label>
@@ -65,7 +59,7 @@ export const AddNewUserContainer = ({
             <ErrorMessage name="name" />
           </div>
           <div className="flex flex-col text-left p-[20px]">
-            <div className="w-[100%] flex items-center gap-10 justify-between">
+            <div className="w-[100%] flex items-center gap-10 justify-between InputContainer">
               <label htmlFor="email" className="w-30% font-bold text-[21px]">
                 Email:
               </label>

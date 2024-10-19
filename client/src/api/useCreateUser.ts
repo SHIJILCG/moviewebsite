@@ -5,10 +5,10 @@ export default function useCreateUser() {
   const queryClient = useQueryClient()
   return useMutation(
     (newUser: { id: number; name: string; email: string }) =>
-      axios.post("http://localhost:4040/create-user", newUser),
+      axios.post("http://localhost:4040/users", newUser),
     {
       onSuccess: () => {
-        console.log("succesfuly posted user");
+        // console.log("succesfuly posted user");
          queryClient.invalidateQueries(['users'])
       },
       onError: () => {

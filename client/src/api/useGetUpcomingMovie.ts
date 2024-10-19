@@ -14,7 +14,7 @@ export const useGetUpcomingMovie = (): UseQueryResult<{
     },
     {
       onSuccess: (data) => {
-        console.log("succesfuly fetched upcoming movies data");
+        // console.log("succesfuly fetched upcoming movies data");
       },
       onError: () => {
         console.log("Error occured");
