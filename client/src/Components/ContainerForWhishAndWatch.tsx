@@ -1,13 +1,7 @@
-import useFetchWatchlater from "../api/useFetchWatchlater";
-import { useFetchWhishList } from "../api/useFetchWhishList";
 import { ContainerType, MovieDetailsType } from "../Types/movietypes";
 import { MovieCard } from "./MovieCard";
-const FetchWhishList = (id: number) => {
-  return useFetchWhishList(id);
-};
-const FetchWatchlater = (id: number) => {
-  return useFetchWatchlater(id);
-};
+import { FetchWatchlater } from "../common/FetchWhislistandWatchlist";
+import { FetchWhishList } from "../common/FetchWhislistandWatchlist";
 export const ContainerForWhishAndWatch = ({
   id,
   type,
@@ -15,6 +9,7 @@ export const ContainerForWhishAndWatch = ({
   id: number;
   type: ContainerType;
 }) => {
+  
   const { data: Movies } =
     type === "WatchLater" ? FetchWatchlater(id) : FetchWhishList(id);
   if (!Movies?.movies || !Movies.movies?.length) {

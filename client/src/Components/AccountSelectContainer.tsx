@@ -36,4 +36,4 @@ export const AccountSelectContainer = ({
       <AddNewUserButton setisNewUser={setisNewuser} />
     </div>
   );
-};
+}

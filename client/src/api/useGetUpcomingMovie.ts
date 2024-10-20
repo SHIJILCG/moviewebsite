@@ -1,4 +1,3 @@
-import React from "react";
 import { useQuery, UseQueryResult } from "react-query";
 import { MovieDetailsType } from "../Types/movietypes";
 import { axiosInstance } from "./axiosinstance";
@@ -13,7 +12,7 @@ export const useGetUpcomingMovie = (): UseQueryResult<{
       return (await response).data;
     },
     {
-      onSuccess: (data) => {
+      onSuccess: () => {
         // console.log("succesfuly fetched upcoming movies data");
       },
       onError: () => {

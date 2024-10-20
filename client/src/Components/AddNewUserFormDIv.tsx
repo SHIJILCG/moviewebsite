@@ -19,7 +19,7 @@ const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email address").required("required"),
 });
 
-export const AddNewUserContainer = ({
+export const AddNewUserFormDIv = ({
   setisNewUser,
 }: AddNewUserContainerPropsType) => {
   const { mutate } = useCreateUser();

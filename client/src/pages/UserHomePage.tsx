@@ -13,7 +13,7 @@ export const UserHomePage = () => {
     <currentUserContext.Provider value={CurrentUser}>
       <div className="flex flex-col h-[100vh] relative">
         <header className="h-[100px] w-[100%] bg-gray-700 fixed top-0 z-[1000] flex items-center justify-between p-[25px] HomeHeader">
-          <UserPropfileButton userid={userId} />
+          <UserPropfileButton />
           <input
             type="text"
             value={SearchValue}

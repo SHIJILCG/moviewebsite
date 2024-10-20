@@ -1,17 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import useFetchUserById from "../api/useFetchUserById";
+import { FethCurrentUser } from "../common/FetchCurrentUser";
 
-export const UserPropfileButton = ({
-  userid,
-}: {
-  userid: string | undefined;
-}) => {
-  const { data: user } = useFetchUserById(
-    !userid || typeof +userid !== "number" ? 0 : +userid
-  );
+export const UserPropfileButton = () => {
+  const userId = FethCurrentUser();
+  const { data: user } = useFetchUserById(userId);
   const navigate = useNavigate();
   if (!user || user.id === 0) {
-    ////no need to click action
     return (
       <div className="flex  flex-col items-center text-white">
         <div className=" w-[50px] h-[50px] rounded-full border-2">
@@ -28,7 +23,7 @@ export const UserPropfileButton = ({
   return (
     <div
       className="flex flex-col items-center text-white font-bold"
-      onClick={() => navigate(`/userprofile`,{state:{...user}})}
+      onClick={() => navigate(`/userprofile`, { state: { ...user } })}
     >
       <div className=" w-[50px] h-[50px] rounded-full active:scale-95">
         <img

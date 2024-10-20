@@ -1,4 +1,3 @@
-import React from "react";
 type CircularRatingContainerPropsTYpe = {
   Text: string;
   voteCount: number;

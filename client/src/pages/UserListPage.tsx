@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useFetchUsers from "../api/useFetchUsers";
 import { AccountSelectContainer } from "../Components/AccountSelectContainer";
-import { AddNewUserContainer } from "../Components/AddNewUserContainer";
+import { AddNewUserFormDIv } from "../Components/AddNewUserFormDIv";
 
 export const UserListPage = () => {
   const { data: Users } = useFetchUsers();
@@ -19,7 +19,7 @@ export const UserListPage = () => {
       </div>
       <div className="h-[100%] flex flex-col justify-center w-[40%] max-w-[40%] LoginPagePartTwo">
         {isNewUser ? (
-          <AddNewUserContainer setisNewUser={setisNewUser} />
+          <AddNewUserFormDIv setisNewUser={setisNewUser} />
         ) : (
           <AccountSelectContainer
             isNewUser={isNewUser}

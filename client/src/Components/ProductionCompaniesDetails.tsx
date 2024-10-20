@@ -1,10 +1,4 @@
-import React from "react";
-type ProductionCompaniesDetailsProsType = {
-  id: number;
-  logo_path: string;
-  origin_country: string;
-  name: string;
-};
+import { ProductionCompaniesDetailsProsType } from "../Types/movietypes";
 export default function ProductionCompaniesDetails({
   id,
   logo_path,

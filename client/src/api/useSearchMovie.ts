@@ -16,7 +16,6 @@ export const useSearchMovie = (
     {
       onSuccess: () => {
         // console.log("succesfuly  fetched Search movie data");
-        // queryClient.invalidateQueries(['searchmovie'])
       },
       onError: () => {
         console.log("Error occured");

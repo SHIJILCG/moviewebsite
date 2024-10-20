@@ -25,3 +25,12 @@ export type whishlistTypeTwo = {
 };
 
 export type ContainerType = "WhishList" | "WatchLater";
+
+
+
+export type ProductionCompaniesDetailsProsType = {
+  id: number;
+  logo_path: string;
+  origin_country: string;
+  name: string;
+};
